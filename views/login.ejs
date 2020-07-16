@@ -4,7 +4,8 @@
         <h1 class="text-center mb-3">
           <i style="margin-right: 10px;" class="fas fa-sign-in-alt"></i>LogIn
         </h1>
-        <form action="/users/login" method="POST">
+        <form action="/user/login" method="POST">
+          <%- include('./partials/messages') %>
           <div class="form-group">
             <label for="email">Email Address</label>
             <input
