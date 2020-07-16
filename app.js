@@ -20,10 +20,8 @@ mongoose.connect(process.env.MONGO_URI, {
 useNewUrlParser : true,
 useUnifiedTopology: true
 })
-.then(msg => {
-    console.log('Mongo connected')
-})
-.catch(err => console.log(err))
+.then(msg => {})
+.catch(err => {if (err) throw err})
 
 const app = express();
 
@@ -61,4 +59,4 @@ app.use("/user", userRoute);
 
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, console.log(`Server running on ${PORT}`));
+app.listen(PORT);
