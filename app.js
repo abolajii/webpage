@@ -20,8 +20,6 @@ mongoose.connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD
 useNewUrlParser : true,
 useUnifiedTopology: true
 })
-.then(msg => {})
-.catch(err => {if (err) throw err})
 
 const app = express();
 
@@ -43,6 +41,11 @@ app.use(
     saveUninitialized: true,
   })
 );
+
+//passport Initialize 
+app.use(passport.initialize())
+app.use(passport.session())
+
 
 // global variable
 const globalVariable = (req, res, next) => {
