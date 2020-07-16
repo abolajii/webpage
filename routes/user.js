@@ -84,12 +84,16 @@ router.post("/register", (req, res) => {
                   req.flash("success_msg", "You are registered and can log in");
                   res.redirect("/user/login");
                 })
-                .catch((err) => console.log(err));
+                .catch((err) => {
+                  if (err) throw err;
+                });
             });
           });
         }
       })
-      .catch((err) => {if (err) throw err})
+      .catch((err) => {
+        if (err) throw err;
+      });
   }
 });
 
