@@ -16,7 +16,7 @@ const userRoute = require("./routes/user");
 dotenv.config({ path: "./config/config.env" });
 
 // //mongoose connect
-mongoose.connect(process.env.MONGO_URI, {
+mongoose.connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@project-ii-ybcxb.mongodb.net/USER?retryWrites=true&w=majority`, {
 useNewUrlParser : true,
 useUnifiedTopology: true
 })
@@ -24,6 +24,7 @@ useUnifiedTopology: true
 .catch(err => {if (err) throw err})
 
 const app = express();
+
 
 app.use(expressLayout);
 app.set("view engine", "ejs");
@@ -58,5 +59,4 @@ app.use("/", indexRoute);
 app.use("/user", userRoute);
 
 const PORT = process.env.PORT || 5000;
-
 app.listen(PORT);
